@@ -4,25 +4,39 @@ using UnityEngine;
 
 public class PhysicsBehaviour : MonoBehaviour
 {
-    [SerializeField] Vector3 accelerationRate;
-    [SerializeField] Vector3 currentAcceleration;
+    //[SerializeField] protected Vector3 accelerationRate;
+    [SerializeField] protected Vector3 currentAcceleration;
 
-    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] protected float mass = 2f;
+    [SerializeField] protected float moveSpeed = 3f;
+    
+    [SerializeField] protected Vector3[] forces;
+    [SerializeField] protected Vector3 fr;
 
-    [SerializeField] AnimationCurve smoothRate;
-    [SerializeField] Transform wayPoint;
+    [SerializeField] Vector3 acceleration;
 
     void FixedUpdate(){
+        Fr();
+        acceleration = GetAcceleration();
         AddAcceleration();
 
         this.transform.position += currentAcceleration * Time.deltaTime;
-
-        /*var d = smoothRate.Evaluate(Time.time);
-        Debug.log(d);/
-        this.transform.position = Vector3.MoveTowards(this.transform.position, wayPoint.position, d * moveSpeed * Time.deltaTime);*/
     }
 
     void AddAcceleration(){
-        currentAcceleration += accelerationRate * Time.deltaTime;
+        currentAcceleration += acceleration * Time.deltaTime;
+    }
+
+    protected Vector3 Fr(){
+        var v = Vector3.zero;
+        foreach(var f in forces){
+            v += f;
+        }
+        fr = v;
+        return v;
+    }
+    
+    protected Vector3 GetAcceleration(){
+        return fr/mass;
     }
 }
