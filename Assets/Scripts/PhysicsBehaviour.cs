@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PhysicsBehaviour : MonoBehaviour
 {
-    [SerializeField] protected Vector3 accelerationRate;
+    //[SerializeField] protected Vector3 accelerationRate;
     [SerializeField] protected Vector3 currentAcceleration;
 
     [SerializeField] protected float mass = 2f;
@@ -15,11 +15,9 @@ public class PhysicsBehaviour : MonoBehaviour
 
     [SerializeField] Vector3 acceleration;
 
-    void Start(){
+    void FixedUpdate(){
         Fr();
         acceleration = GetAcceleration();
-    }
-    void FixedUpdate(){
         AddAcceleration();
 
         this.transform.position += currentAcceleration * Time.deltaTime;
