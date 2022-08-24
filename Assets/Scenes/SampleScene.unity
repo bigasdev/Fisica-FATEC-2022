@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -155,31 +155,11 @@ MonoBehaviour:
   accelerationRate: {x: 0, y: 0, z: 1}
   currentAcceleration: {x: 0, y: 0, z: 0}
   moveSpeed: 3
-  smoothRate:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 2.01474
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1.1423798
-      value: 0.24783325
-      inSlope: Infinity
-      outSlope: Infinity
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  wayPoint: {fileID: 1147611463}
+  forces:
+  - {x: 3, y: 0, z: 0}
+  - {x: 2, y: 4, z: 0}
+  - {x: 1, y: 0, z: 2}
+  fr: {x: 0, y: 0, z: 0}
 --- !u!4 &223153135
 Transform:
   m_ObjectHideFlags: 0
@@ -404,13 +384,8 @@ MonoBehaviour:
   accelerationRate: {x: 0, y: 0, z: 1}
   currentAcceleration: {x: 0, y: 0, z: 0}
   moveSpeed: 3
-  smoothRate:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  wayPoint: {fileID: 0}
+  forces: []
+  fr: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
