@@ -5,13 +5,14 @@ using UnityEngine;
 public class MoleculaDiatomica : MonoBehaviour
 {
     [SerializeField] GameObject[] esferas;
-    [SerializeField] float k, mass;
+    [SerializeField] float k, mass, b;
 
     [SerializeField] Vector3 tamanho;
-    [SerializeField] Vector3 distancia, fel, felMassa, felMassaNegativo, felMassaFrame, felMassaNegativoFrame;
+    [SerializeField] Vector3 distancia, amortecimento, fel, felMassa, felMassaNegativo, felMassaFrame, felMassaNegativoFrame;
 
     void FixedUpdate(){
         UpdateSpeed();
+        //CalculateAmortecimento();
         
         esferas[0].transform.position += felMassaFrame * Time.deltaTime;
         esferas[1].transform.position += felMassaNegativoFrame * Time.deltaTime;
@@ -22,10 +23,21 @@ public class MoleculaDiatomica : MonoBehaviour
 
         fel = (distancia-tamanho)*(-k);
 
+
         felMassa = fel/mass;
         felMassaNegativo = (-fel)/mass;
 
         felMassaFrame += felMassa * Time.deltaTime;
         felMassaNegativoFrame += felMassaNegativo * Time.deltaTime; 
     }
+
+    /*void CalculateAmortecimento(){
+        amortecimento = (-b*felMassaFrame)-(-k*esferas[0].transform.position);
+
+        felMassa = amortecimento/mass;
+        felMassaNegativo = (-amortecimento)/mass;
+
+        felMassaFrame += felMassa * Time.deltaTime;
+        felMassaNegativoFrame += felMassaNegativo * Time.deltaTime;
+    }*/
 }
