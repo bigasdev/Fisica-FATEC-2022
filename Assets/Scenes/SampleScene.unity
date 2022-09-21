@@ -1135,4 +1135,3 @@ MonoBehaviour:
   acceleration: {x: 0, y: 0, z: 0}
   constanteElastica: -2
   mass: 4
-  F: {x: 0, y: 0, z: 0}
